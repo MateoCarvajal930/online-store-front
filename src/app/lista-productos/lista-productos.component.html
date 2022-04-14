@@ -1,0 +1,43 @@
+<div>
+<form class="form-inline" th:action="@{/}">
+    <div class="nav-form-group mb-2">
+      <label class="nav-item">Filtrar: </label>
+    </div>
+    <div class="nav-form-group mx-sm-3 mb-2">
+      <input type="text" name="keyword" class="nav-form-control" id="keyword" th:value="${keyword}" placeholder="Ingrese una palabra clave." required>
+    </div>
+    <input type="submit" class="btn btn-secondary mb2" id="btnSearch" value="Buscar.">
+    <div id="listaP">
+        <h2>Lista de Productos</h2>
+    </div>
+  </form>
+  
+</div>
+  <br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Categoria</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos">
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.marca}}</td>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.precio}}</td>
+            <td>descripcion</td>
+            <td>
+                <button (click)="actualizarProducto(producto.id)" class="btn btn-info">Actualizar</button>
+                <button (click)="eliminarProducto(producto.id)" class="btn btn-info" style="margin-left: 10px">Eliminar</button>
+                <button (click)="verDetallesProducto(producto.id)" class="btn btn-info" style="margin-left: 10px">Detalles</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

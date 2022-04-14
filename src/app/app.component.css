@@ -1,0 +1,16 @@
+
+.form-inline{
+    margin:inherit;
+}
+#keyword{
+    margin-top: 0px;
+}
+.text-center{
+    margin-left: 19%;
+    border: solid black;
+    color: black;
+    background:radial-gradient(rgb(75, 73, 73),white);
+}
+.nav-item{
+    color: gray;
+}

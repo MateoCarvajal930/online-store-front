@@ -1,0 +1,105 @@
+
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registro de Productos</h3>
+    <form (ngSubmit)="onSubmit()" #productoForm = "ngForm">
+        <div class="form-group">
+            <label>Nombre Producto</label>
+            <input type="text"
+              class="form-control"
+              id="nombre"
+              [(ngModel)]="producto.nombre"    
+              name="nombre"
+              required
+              placeholder="Digite el nombre del Producto."
+              minlength="5"
+              maxlength="30"
+              #nombre = "ngModel"
+              >
+              <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['required']">
+                  Por favor ingrese el nombre del producto.
+                </div>
+                <div *ngIf="nombre.errors?.['minlength']">
+                  El nombre del producto debe tener como minimo 4 caracteres.
+                </div>
+                <div *ngIf="nombre.errors?.['maxlength']">
+                  El nombre del producto puede tener 30 caracteres como maximo.
+                </div>
+              </div>
+        </div>  
+        <div class="form-group">
+            <label>Marca</label>
+            <input type="text"
+              class="form-control"
+              id="marca"
+              [(ngModel)]="producto.marca"    
+              name="marca"
+              required
+              placeholder="Digite la marca del Producto."
+              minlength="5"
+              maxlength="30"
+              #marca = "ngModel">
+              <div class="alert alert-danger" *ngIf="marca.invalid && (marca.dirty || marca.touched)">
+                <div *ngIf="marca.errors?.['required']">
+                  Por favor ingrese la marca del producto.
+                </div>
+                <div *ngIf="marca.errors?.['minlength']">
+                  La marca del producto debe tener como minimo 5 caracteres.
+                </div>
+                <div *ngIf="marca.errors?.['maxlength']">
+                  La marca del producto puede tener 30 caracteres como maximo.
+                </div>
+              </div>
+        </div>  
+        <div class="form-group">
+            <label>Categoria</label>
+            <input type="text"
+              class="form-control"
+              id="categoria"
+              [(ngModel)]="producto.categoria"  
+              name="categoria"
+              required
+              placeholder="Digite la categoria a la que pertenece el producto."
+              minlength="5"
+              maxlength="30"
+              #categoria = "ngModel">
+              <div class="alert alert-danger" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
+                <div *ngIf="categoria.errors?.['required']">
+                  Por favor ingrese la categoria ala que pertenece el producto.
+                </div>
+                <div *ngIf="categoria.errors?.['minlength']">
+                  La categoria del producto debe tener como minimo 5 caracteres.
+                </div>
+                <div *ngIf="marca.errors?.['maxlength']">
+                  La categoria del producto puede tener 30 caracteres como maximo.
+                </div>
+              </div>
+        </div>  
+        <div class="form-group">
+            <label>Precio</label>
+            <input type="text"
+              class="form-control"
+              id="precio"
+              [(ngModel)]="producto.precio"    
+              name="precio"
+              required
+              placeholder="Digite la categoria a la que pertenece el producto."
+              minlength="4"
+              maxlength="15"
+              #precio = "ngModel"
+              >
+              <div class="alert alert-danger" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                <div *ngIf="precio.errors?.['required']">
+                  Por favor ingrese el precio del producto.
+                </div>
+                <div *ngIf="precio.errors?.['minlength']">
+                  El precio del producto debe tener como minimo 4 caracteres.
+                </div>
+                <div *ngIf="precio.errors?.['maxlength']">
+                  El precio del producto puede tener 15 caracteres como maximo.
+                </div>
+              </div>
+        </div>
+        <button class="btn btn-success" [disabled]="!productoForm.form.valid">Guardar</button>
+    </form>
+</div>
