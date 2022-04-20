@@ -1,0 +1,77 @@
+<div>
+    <p></p>
+    <div>
+    <!--filtrar por nombre-->
+    <form class="form-inline">
+        <div class="nav-form-group mb-2">
+          <label class="nav-item">Filtrar por nombre: </label>
+        </div>
+        <div class="nav-form-group mx-sm-3 mb-2">
+          <input type="text" name="keyword" [(ngModel)]="keyword" class="nav-form-control" placeholder="" required>
+        </div>
+        <input type="button" id="btnSearch"class="btn btn-secondary mb2"  value="Buscar." (click)="obtenerProductoPorNombre(keyword)">
+     <!--filtrar por marca-->   
+      <div class="nav-form-group mb-2">
+          <label class="nav-item">Filtrar por marca: </label>
+        </div>
+        <div class="nav-form-group mx-sm-3 mb-2">
+          <input type="text" name="keywordMarca" [(ngModel)]="keywordMarca" class="nav-form-control" placeholder="" required>
+        </div>
+        <input type="button" class="btn btn-secondary mb2" (click)="obtenerProductosPorMarca(keywordMarca)"  value="Buscar.">
+    </form>
+    <p></p>
+    <!--filtrar por categoria-->
+    <form class="form-inline">
+        <div class="nav-form-group mb-2">
+          <label class="nav-item">Filtrar por categoria: </label>
+        </div>
+        <div class="nav-form-group mx-sm-3 mb-2">
+          <input type="text" name="keywordCategoria" [(ngModel)]="keywordCategoria" class="nav-form-control" placeholder="" required>
+        </div>
+        <input type="button"class="btn btn-secondary mb2" (click)="obtenerProductosPorCategoria(keywordCategoria)"  value="Buscar.">
+     <!--filtrar por marca-->   
+      <div class="nav-form-group mb-2">
+          <label class="nav-item">Filtrar por tipo: </label>
+        </div>
+        <div class="nav-form-group mx-sm-3 mb-2">
+          <input type="text" name="keywordTipo" [(ngModel)]="keywordTipo" class="nav-form-control" placeholder="" required>
+        </div>
+        <input type="button" (click)="obtenerProductosPorTipo(keywordTipo)" class="btn btn-secondary mb2"  value="Buscar.">
+    </form>
+    <p></p>
+    <hr>
+        <div id="listaP">
+            <h2>Lista de Productos</h2>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Categoria</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of producto">
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.marca}}</td>
+                <td>{{producto.categoria}}</td>
+                <td>{{producto.precio}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.tipoProducto}}</td>
+                <td>
+                    <button (click)="actualizarProducto(producto.id)" class="btn btn-info">Actualizar</button>
+                    <br> 
+                    <button (click)="eliminarProducto(producto.id)" class="btn btn-info" >Eliminar</button>
+                    <br>
+                    <button (click)="verDetallesProducto(producto.id)" class="btn btn-info" >Detalles</button>
+                </td>
+            </tr>
+        </tbody>
+    
+    </table>

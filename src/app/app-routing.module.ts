@@ -4,6 +4,7 @@ import { InsertarProductoComponent } from './insertar-producto/insertar-producto
 import { ListaProductosComponent } from './lista-productos/lista-productos.component';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { ProductoDetallesComponent } from './producto-detalles/producto-detalles.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const routes: Routes = [
   {path : 'productos',component:ListaProductosComponent},
@@ -11,8 +12,8 @@ const routes: Routes = [
   {path : 'insertar-producto',component:InsertarProductoComponent},
   {path : 'actualizar-producto/:id',component:ActualizarProductoComponent},
   {path : 'eliminar-producto/:id',component:ListaProductosComponent},
-  {path : 'producto-detalles/:id',component : ProductoDetallesComponent}
-
+  {path : 'producto-detalles/:id',component : ProductoDetallesComponent},
+  {path : 'busqueda',component:BusquedaComponent}
 ];
 
 @NgModule({

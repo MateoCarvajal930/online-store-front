@@ -5,3 +5,24 @@
     margin-top: 20px;
     align-items: baseline;
 }
+input.btn{
+    margin-left: 0px;
+}
+label{
+    text-align: center;
+    width: 150px;
+}
+button.btn{
+    margin-left: 10px;
+    margin-top: 3px;
+    width: 100px;
+}
+hr{
+    margin-top: 2px;
+}
+td,table,th,thead{
+    margin: 0;
+    border: solid 1px black;
+}
+
+

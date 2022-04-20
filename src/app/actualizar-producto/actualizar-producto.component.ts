@@ -11,6 +11,9 @@ import swal from 'sweetalert2';
   styleUrls: ['./actualizar-producto.component.css']
 })
 export class ActualizarProductoComponent implements OnInit {
+  handleSearch(value: string){
+    console.log(value);
+  }
 
   id:number;
   producto:Producto = new Producto;

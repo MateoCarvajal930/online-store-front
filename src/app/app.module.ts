@@ -9,13 +9,17 @@ import { InsertarProductoComponent } from './insertar-producto/insertar-producto
 import { FormsModule } from '@angular/forms';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { ProductoDetallesComponent } from './producto-detalles/producto-detalles.component';
+import { FilterPipe } from './filter.pipe';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListaProductosComponent,
     InsertarProductoComponent,
     ActualizarProductoComponent,
-    ProductoDetallesComponent
+    ProductoDetallesComponent,
+    FilterPipe,
+    BusquedaComponent
   ],
   imports: [
     BrowserModule,

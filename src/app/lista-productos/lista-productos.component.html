@@ -1,12 +1,12 @@
 <div>
 <form class="form-inline" th:action="@{/}">
     <div class="nav-form-group mb-2">
-      <label class="nav-item">Filtrar: </label>
+      <label class="nav-item">Filtrar por nombre: </label>
     </div>
     <div class="nav-form-group mx-sm-3 mb-2">
-      <input type="text" name="keyword" class="nav-form-control" id="keyword" th:value="${keyword}" placeholder="Ingrese una palabra clave." required>
+      <input type="text" name="keyword" [(ngModel)]="keyword" class="nav-form-control" placeholder="" required>
     </div>
-    <input type="submit" class="btn btn-secondary mb2" id="btnSearch" value="Buscar.">
+    <input type="button" class="btn btn-secondary mb2" id="btnSearch" value="Buscar."  (click)="obtenerProductoPorNombre(keyword)">
     <div id="listaP">
         <h2>Lista de Productos</h2>
     </div>
@@ -22,19 +22,23 @@
             <th>Categoria</th>
             <th>Precio</th>
             <th>Descripcion</th>
+            <th>Tipo</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let producto of productos">
+        <tr *ngFor="let producto of producto">
             <td>{{producto.nombre}}</td>
             <td>{{producto.marca}}</td>
             <td>{{producto.categoria}}</td>
             <td>{{producto.precio}}</td>
-            <td>descripcion</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.tipoProducto}}</td>
             <td>
                 <button (click)="actualizarProducto(producto.id)" class="btn btn-info">Actualizar</button>
+                  <br>
                 <button (click)="eliminarProducto(producto.id)" class="btn btn-info" style="margin-left: 10px">Eliminar</button>
+                  <br> 
                 <button (click)="verDetallesProducto(producto.id)" class="btn btn-info" style="margin-left: 10px">Detalles</button>
             </td>
         </tr>

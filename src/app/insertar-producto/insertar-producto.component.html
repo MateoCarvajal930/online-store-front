@@ -1,4 +1,4 @@
-<div class="col-md-6 offset-md-3">
+<div class="col-md-6 offset-md-3" style="border: solid 1px black;">
   <p></p>
     <h3 class="text-center">Registro de Productos</h3>
     <form (ngSubmit)="onSubmit()" #productoForm = "ngForm">
@@ -104,32 +104,50 @@
           <label for="">Descripcion</label>
           <input type="text"
               class="form-control"
-              id="precio"
-              [(ngModel)]="producto.precio"    
-              name="precio"
+              id="descripcion"
+              [(ngModel)]="producto.descripcion"    
+              name="descripcion"
               required
-              placeholder="Digite la categoria a la que pertenece el producto."
+              placeholder="Ingrese una descripcion para el producto."
               minlength="4"
-              maxlength="15"
-              #precio = "ngModel"
+              maxlength="255"
+              #descripcion = "ngModel"
               >
-              <div></div>
+              <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                <div *ngIf="descripcion.errors?.['required']">
+                  Por favor ingrese la descripcion del producto.
+                </div>
+                <div *ngIf="descripcion.errors?.['minlength']">
+                  La descripcion del producto debe tener como minimo 4 caracteres.
+                </div>
+                <div *ngIf="descripcion.errors?.['maxlength']">
+                  La descripcion del producto puede tener 255 caracteres como maximo.
+                </div>
+              </div>
         </div>
         <div class="form-group">
           <label for="">Tipo de producto</label>
           <input type="text"
               class="form-control"
-              id="precio"
-              [(ngModel)]="producto.precio"    
-              name="precio"
+              id="tipoProducto"
+              [(ngModel)]="producto.tipoProducto"    
+              name="tipoProducto"
               required
-              placeholder="Digite la categoria a la que pertenece el producto."
+              placeholder="Digite el tipo de producto"
               minlength="4"
-              maxlength="15"
-              #precio = "ngModel"
+              maxlength="30"
+              #tipoProducto = "ngModel"
               >
-              <div>
-                <div></div>
+              <div class="alert alert-danger" *ngIf="tipoProducto.invalid &&(tipoProducto.dirty || tipoProducto.touched)">
+                <div *ngIf="tipoProducto.errors?.['required']">
+                  Por favor ingrese el tipo de producto.
+                </div>
+                <div *ngIf="tipoProducto.errors?.['minlength']">
+                  El tipo de producto debe tener como minimo 4 caracteres.
+                </div>
+                <div *ngIf="tipoProducto.errors?.['maxlength']">
+                  El tipo de producto puede tener 30 caracteres como maximo.
+                </div>
               </div>
         </div>
         <button class="btn btn-success" [disabled]="!productoForm.form.valid">Guardar</button>

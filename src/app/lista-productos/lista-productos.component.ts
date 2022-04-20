@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges, SimpleChanges } from '@angular/core';
 import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
 import { ActualizarProductoComponent } from '../actualizar-producto/actualizar-producto.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import swal from 'sweetalert2';
 import { sequence } from '@angular/animations';
 
@@ -13,17 +13,22 @@ import { sequence } from '@angular/animations';
   styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
-
-productos:Producto[];
-
-  constructor(private productoService:ProductoService, private router:Router) { }
+producto:Producto[];
+keyword=null;
+  constructor( private activatedRoute : ActivatedRoute,
+      private productoService:ProductoService,
+      private router:Router,
+      private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.obtenerProductos();
   }
+  
+
+  
   private obtenerProductos(){
     this.productoService.obtenerListaDeProductos().subscribe(dato => {
-      this.productos = dato;
+      this.producto = dato;
     })
   }
 
@@ -59,6 +64,13 @@ productos:Producto[];
     })
   }
 
+  obtenerProductoPorNombre(nombre:string){
+    if(this.keyword)
+      this.productoService.obtenerProductoPorNombre(nombre).subscribe( dato => {
+        this.producto=dato;
+    });else
+    this.obtenerProductos();
+  }
   verDetallesProducto(id:number) {
     this.router.navigate(['producto-detalles',id]);
   }
